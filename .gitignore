@@ -1,2 +1,5 @@
 .idea
+/sample-code
+/CS7NS1_Assignment_1
 .DS_Store
+.gitignore.swp
