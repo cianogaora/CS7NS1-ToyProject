@@ -1,5 +1,22 @@
 .idea
-/sample-code
+/sample-code/classify.py
+/sample-code/Dataset.py
+/sample-code/test.h5.h5
+/sample-code/test.h5.json
+/sample-code/test.h5_resume.h5
+/sample-code/train.py
+/sample-code/python-captcha-Sample code doc.pdf
+/sample-code/1char_big_train
+/sample-code/1char_train
+/sample-code/1char_test
 /CS7NS1_Assignment_1
+/sample-code/__pycache__/
+
+/solution/__pycache__/MyDataset.cpython-310.pyc
+/solution/__pycache__/MyDataset.cpython-39.pyc
+/solution/__pycache__/model.cpython-310.pyc
+/solution/__pycache__/train.cpython-310.pyc
+
+
 .DS_Store
 .gitignore.swp
