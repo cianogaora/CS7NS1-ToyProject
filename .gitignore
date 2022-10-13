@@ -16,7 +16,7 @@
 /solution/__pycache__/MyDataset.cpython-39.pyc
 /solution/__pycache__/model.cpython-310.pyc
 /solution/__pycache__/train.cpython-310.pyc
-
+../sample-code/1char_alt_test/
 
 .DS_Store
 .gitignore.swp
