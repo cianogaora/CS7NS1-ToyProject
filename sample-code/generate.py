@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/local/bin/python3
 
 import os
 import numpy
@@ -7,6 +7,7 @@ import string
 import cv2
 import argparse
 import captcha.image
+import shutil
 
 def main():
     parser = argparse.ArgumentParser()
@@ -65,6 +66,7 @@ def main():
 
         image = numpy.array(captcha_generator.generate_image(random_str))
         cv2.imwrite(image_path, image)
+
 
 if __name__ == '__main__':
     main()
