@@ -25,8 +25,9 @@ num_symbols = 36
 def main():
     train_path = '../sample-code/1char_big_train/'
     test_path = '../sample-code/1char_test/'
-    train_image_labels = [f[0] for f in os.listdir(train_path) if os.path.isfile(os.path.join(train_path, f))]
-    test_image_labels = [f[0] for f in os.listdir(test_path) if os.path.isfile(os.path.join(test_path, f))]
+    files = os.listdir(train_path)
+    train_image_labels = [f[0] for f in files]
+    # test_image_labels = [f[0] for f in os.listdir(test_path) if os.path.isfile(os.path.join(test_path, f))]
     print(train_image_labels[0])
     symbols = open('../sample-code/symbols.txt').readlines()
     device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
@@ -44,10 +45,10 @@ def main():
     data_transforms = transforms.ToTensor()
     # data_transforms = None
     train_dataset = MyDataset(train_path, Transform=data_transforms, labels=train_labels_enc)
-    test_dataset = MyDataset(test_path, Transform=data_transforms, labels=test_image_labels)
+    # test_dataset = MyDataset(test_path, Transform=data_transforms, labels=test_image_labels)
 
-    train_dataloader = dataloader.DataLoader(train_dataset, batch_size=32, shuffle=True)
-    test_dataloader = dataloader.DataLoader(test_dataset, batch_size=4, shuffle=True)
+    train_dataloader = dataloader.DataLoader(train_dataset, batch_size=64, shuffle=True)
+    # test_dataloader = dataloader.DataLoader(test_dataset, batch_size=4, shuffle=True)
 
     model = NeuralNet()
     optimizer = torch.optim.SGD(model.parameters(), lr=0.01, momentum=0.9)
@@ -61,7 +62,7 @@ def main():
     train_losses = []
     train_counter = []
     n_epochs = 20
-    log_interval = 10
+    log_interval = 64
     model.to(device)
     for epoch in range(n_epochs):
         print(f"epoch:{epoch}")

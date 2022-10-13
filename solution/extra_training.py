@@ -11,12 +11,12 @@ import numpy as np
 from torch.nn import functional as F
 
 
-n_epochs = 10
-log_interval = 16
+n_epochs = 5
+log_interval = 32
 model = NeuralNet()
 model.load_state_dict(torch.load('model.pth'))
-optimizer = torch.optim.SGD(model.parameters(), lr=0.001)
-train_path = '../sample-code/1char_train/'
+optimizer = torch.optim.SGD(model.parameters(), lr=0.01)
+train_path = '../sample-code/1char_big_train/'
 
 device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 print(device)
@@ -36,7 +36,7 @@ train_labels_enc = torch.from_numpy(train_labels_enc)
 data_transforms = transforms.ToTensor()
 # data_transforms = None
 train_dataset = MyDataset(train_path, Transform=data_transforms, labels=train_labels_enc)
-train_dataloader = dataloader.DataLoader(train_dataset, batch_size=16, shuffle=True)
+train_dataloader = dataloader.DataLoader(train_dataset, batch_size=32, shuffle=True, num_workers=4)
 model.to(device)
 
 def main():
@@ -52,7 +52,7 @@ def main():
             optimizer.step()
             if batch_idx % log_interval == 0:
                 print('Train Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.6f}'.format(
-                    epoch, batch_idx * len(data), len(train_dataloader.dataset),
+                    epoch, batch_idx * len(data['image']), len(train_dataloader.dataset),
                            100. * batch_idx / len(train_dataloader), loss.item()))
 
             torch.save(model.state_dict(), 'model.pth')
