@@ -9,7 +9,7 @@ from MyDataset import MyDataset
 import os
 from torchvision import transforms
 
-test_path = '../sample-code/1char_alt_test/'
+test_path = '../sample-code/1char_test/'
 test_image_labels = [f[0] for f in os.listdir(test_path) if os.path.isfile(os.path.join(test_path, f))]
 
 test_labels_enc = [ord(label) for label in test_image_labels]
