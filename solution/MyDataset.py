@@ -15,7 +15,10 @@ class MyDataset(dataset.Dataset):
         self.data = []
         files = [f for f in os.listdir(root_dir)]
         for file in files:
-            self.data.append(cv2.imread(root_dir + file))
+            image = cv2.imread(root_dir + file)
+            image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+            self.data.append(image)
             # with Image.open(root_dir + file) as im:
             #     self.data.append(im)
 

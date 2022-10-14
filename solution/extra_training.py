@@ -11,7 +11,7 @@ import numpy as np
 from torch.nn import functional as F
 
 
-n_epochs = 5
+n_epochs = 7
 log_interval = 32
 model = NeuralNet()
 model.load_state_dict(torch.load('model.pth'))
