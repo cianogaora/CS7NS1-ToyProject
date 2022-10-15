@@ -1,8 +1,6 @@
 from torch.utils.data import dataloader
 from model import NeuralNet
-from sklearn import preprocessing
 import numpy as np
-import train
 import torch
 from torch.nn import functional as F
 from MyDataset import MyDataset
@@ -32,9 +30,6 @@ test_losses = []
 
 def test(model):
     model.eval()
-    test_loss = 0
-    correct = 0
-    total = 0
     with torch.no_grad():
         model.eval()
         test_loss = 0
@@ -56,7 +51,7 @@ def test(model):
 
 def main():
     network = NeuralNet()
-    network.load_state_dict(torch.load('model.pth'))
+    network.load_state_dict(torch.load('models/model2.pth'))
     test(network)
 
 if __name__ == "__main__":

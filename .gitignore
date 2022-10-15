@@ -17,6 +17,9 @@
 /solution/__pycache__/model.cpython-310.pyc
 /solution/__pycache__/train.cpython-310.pyc
 ../sample-code/1char_alt_test/
+/solution/models/model.pth
+/solution/models/model2.pth
+/solution/model.pth
 
 .DS_Store
 .gitignore.swp

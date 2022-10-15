@@ -2,8 +2,6 @@ import os
 import cv2
 import torch
 from torch.utils.data import dataset
-from PIL import Image
-
 
 
 class MyDataset(dataset.Dataset):
@@ -17,10 +15,7 @@ class MyDataset(dataset.Dataset):
         for file in files:
             image = cv2.imread(root_dir + file)
             image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-
             self.data.append(image)
-            # with Image.open(root_dir + file) as im:
-            #     self.data.append(im)
 
     def __len__(self):
         return len(self.data)
