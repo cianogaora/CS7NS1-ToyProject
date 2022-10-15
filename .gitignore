@@ -20,6 +20,7 @@
 /solution/models/model.pth
 /solution/models/model2.pth
 /solution/model.pth
+/solution/optimizer.pth
 
 .DS_Store
 .gitignore.swp
