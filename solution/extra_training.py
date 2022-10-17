@@ -53,7 +53,7 @@ def main():
                            100. * batch_idx / len(train_dataloader), loss.item()))
 
             torch.save(model.state_dict(), 'models/model3_softmax.pth')
-            torch.save(optimizer.state_dict(), 'optimizer.pth')
+            # torch.save(optimizer.state_dict(), 'optimizer.pth')
 
 if __name__ == '__main__':
     main()

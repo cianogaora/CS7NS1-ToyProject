@@ -57,10 +57,10 @@ def main():
                            100. * batch_idx / len(train_dataloader), loss.item()))
 
             torch.save(model.state_dict(), 'models/model3_softmax.pth')
-            torch.save(optimizer.state_dict(), 'optimizer.pth')
+            # torch.save(optimizer.state_dict(), 'optimizer.pth')
 
-    path = '/Users/cian/Google Drive/Engineering/5th Year/Scalable/ToyProject/solution/model.pth'
-    torch.save(model.state_dict(), path)
+    # path = '/Users/cian/Google Drive/Engineering/5th Year/Scalable/ToyProject/solution/model.pth'
+    # torch.save(model.state_dict(), path)
 
 
 if __name__ == '__main__':
