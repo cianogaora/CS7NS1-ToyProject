@@ -51,7 +51,7 @@ def test(model):
 
 def main():
     network = NeuralNet()
-    network.load_state_dict(torch.load('models/model2.pth'))
+    network.load_state_dict(torch.load('models/model3_softmax.pth'))
     test(network)
 
 if __name__ == "__main__":

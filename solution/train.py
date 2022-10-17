@@ -38,7 +38,7 @@ def main():
     optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
     # optimizer.load_state_dict(torch.load('optimizer.pth'))
 
-    n_epochs = 10
+    n_epochs = 5
     log_interval = 64
     model.to(device)
     for epoch in range(n_epochs):
@@ -56,7 +56,7 @@ def main():
                     epoch, batch_idx * len(data['image']), len(train_dataloader.dataset),
                            100. * batch_idx / len(train_dataloader), loss.item()))
 
-            torch.save(model.state_dict(), 'models/model2.pth')
+            torch.save(model.state_dict(), 'models/model3_softmax.pth')
             torch.save(optimizer.state_dict(), 'optimizer.pth')
 
     path = '/Users/cian/Google Drive/Engineering/5th Year/Scalable/ToyProject/solution/model.pth'
