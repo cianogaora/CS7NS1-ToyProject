@@ -19,6 +19,7 @@
 ../sample-code/1char_alt_test/
 /solution/models/model.pth
 /solution/models/model2.pth
+solution/models/model2.pth.zip
 /solution/model.pth
 /solution/optimizer.pth
 
