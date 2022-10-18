@@ -16,7 +16,7 @@ for i in range(len(test_labels_enc)):
     if test_labels_enc[i] < 58:
         test_labels_enc[i] -= 48
     else:
-        test_labels_enc[i] -= 65
+        test_labels_enc[i] -= 55
 
 test_labels_enc = np.asarray(test_labels_enc)
 test_labels_enc = torch.from_numpy(test_labels_enc)
@@ -51,7 +51,7 @@ def test(model):
 
 def main():
     network = NeuralNet()
-    network.load_state_dict(torch.load('models/model3_softmax.pth'))
+    network.load_state_dict(torch.load('models/model4_softmax.pth'))
     test(network)
 
 if __name__ == "__main__":

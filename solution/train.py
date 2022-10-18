@@ -1,5 +1,6 @@
 import torch
 from torch.utils.data import dataloader
+from torch import nn
 from torchvision import transforms
 import os
 from MyDataset import MyDataset
@@ -23,7 +24,7 @@ def main():
         if train_labels_enc[i] < 58:
             train_labels_enc[i] -= 48
         else:
-            train_labels_enc[i] -= 65
+            train_labels_enc[i] -= 55
 
     train_labels_enc = np.asarray(train_labels_enc)
     train_labels_enc = torch.from_numpy(train_labels_enc)
@@ -31,14 +32,14 @@ def main():
     data_transforms = transforms.ToTensor()
     train_dataset = MyDataset(train_path, Transform=data_transforms, labels=train_labels_enc)
 
-    train_dataloader = dataloader.DataLoader(train_dataset, batch_size=64, shuffle=True, num_workers=4)
+    train_dataloader = dataloader.DataLoader(train_dataset, batch_size=32, shuffle=True, num_workers=4)
 
     model = NeuralNet()
     # optimizer = torch.optim.SGD(model.parameters(), lr=0.01, momentum=0.9)
-    optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
+    optimizer = torch.optim.Adam(model.parameters(), lr=0.0001)
     # optimizer.load_state_dict(torch.load('optimizer.pth'))
-
-    n_epochs = 5
+    criterion = nn.CrossEntropyLoss()
+    n_epochs = 10
     log_interval = 64
     model.to(device)
     for epoch in range(n_epochs):
@@ -48,7 +49,7 @@ def main():
             optimizer.zero_grad()
             output = model(data['image'].to(device))
             labels = data['label'].to(device)
-            loss = F.nll_loss(output, labels)
+            loss = criterion(output, labels)
             loss.backward()
             optimizer.step()
             if batch_idx % log_interval == 0:
@@ -56,7 +57,7 @@ def main():
                     epoch, batch_idx * len(data['image']), len(train_dataloader.dataset),
                            100. * batch_idx / len(train_dataloader), loss.item()))
 
-            torch.save(model.state_dict(), 'models/model3_softmax.pth')
+            torch.save(model.state_dict(), 'models/model4_softmax.pth')
             # torch.save(optimizer.state_dict(), 'optimizer.pth')
 
     # path = '/Users/cian/Google Drive/Engineering/5th Year/Scalable/ToyProject/solution/model.pth'
